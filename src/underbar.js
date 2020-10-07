@@ -112,27 +112,15 @@
     if (iterator === undefined) {
       iterator = _.identity;
     }
-    var copy = array.slice();
     var results = [];
     var iterated = [];
     for (var i = 0; i < array.length; i++) {
       var currentIterated = iterator(array[i]);
       if (iterated.indexOf(currentIterated) < 0) {
         results.push(array[i]);
+        iterated.push(currentIterated);
       }
     }
-    /*
-    for (var i = 0; i < array.length; i++) {
-      iterated.push(iterator(array[i]));
-    }
-
-    for (var i = 0; i < array.length; i++) {
-      for (var j = 1; j < array.length: j++) {
-        if (array[i] !== array[j])
-      }
-    }
-    //check and filter out the duplicates in iterated array
-    */
 
     return results;
   };
@@ -143,6 +131,12 @@
     // map() is a useful primitive iteration function that works a lot
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
+    var results = [];
+    //collection[i], i, collection)
+    _.each(collection, function(val, idx, collection) {
+      results.push(iterator(val));
+    })
+    return results;
   };
 
   /*
@@ -184,6 +178,12 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function (collection, iterator, accumulator) {
+
+    _.each(collection, function(val, idx, collection) {
+      accumulator = iterator(accumulator, val);
+    })
+    return accumulator;
+
   };
 
   // Determine if the array or object contains a given value (using `===`).
