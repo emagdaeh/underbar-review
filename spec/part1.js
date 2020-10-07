@@ -475,10 +475,6 @@
           // Add a line here that makes this test pass
           // for a working implementation of reduce
 
-          // item is the individual number being iterated over
-          // from memo, so pushed each 'item' into orderTraversed
-          // and set memo to equal orderTraversed
-
           orderTraversed.push(item);
 
           memo = orderTraversed;

@@ -85,7 +85,7 @@
   // Return all elements of an array that pass a truth test.
   _.filter = function (collection, test) {
     var results = [];
-    _.each(collection, function(val) {
+    _.each(collection, function (val) {
       if (test(val)) {
         results.push(val);
       }
@@ -99,7 +99,7 @@
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
     var results = [];
-    _.filter(collection, function(val) {
+    _.filter(collection, function (val) {
       if (!test(val)) {
         results.push(val);
       }
@@ -133,7 +133,7 @@
     // the members, it also maintains an array of results.
     var results = [];
     //collection[i], i, collection)
-    _.each(collection, function(val, idx, collection) {
+    _.each(collection, function (val, idx, collection) {
       results.push(iterator(val));
     });
     return results;
@@ -178,12 +178,12 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function (collection, iterator, accumulator) {
-    // Need edge cases for no accumulator being passed
     if (accumulator === undefined) {
       accumulator = collection[0];
+      // Need to set iterator to second index
+      collection = collection.slice(1);
     }
-
-    _.each(collection, function(val, idx, collection) {
+    _.each(collection, function (val, idx, collection) {
       accumulator = iterator(accumulator, val);
     });
 
