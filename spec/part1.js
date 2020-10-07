@@ -250,7 +250,7 @@
       });
 
       it('should return all odd numbers in an array', function() {
-        var isOdd = function(num) { return num % 2 !== 0; };[]
+        var isOdd = function(num) { return num % 2 !== 0; };
         var odds = _.filter([1, 2, 3, 4, 5], isOdd);
 
         expect(odds).to.eql([1, 3, 5]);
@@ -377,8 +377,8 @@
 
       it('should apply a function to every value in an array', function() {
         var multiplyByTwo = function (val) {
-          return val * 2; 
-        }
+          return val * 2;
+        };
 
         expect(_.map([1, 2, 3], multiplyByTwo)).to.eql([2, 4, 6]);
       });
@@ -474,10 +474,15 @@
           // FILL_ME_IN
           // Add a line here that makes this test pass
           // for a working implementation of reduce
-          orderTraversed.push();
-          
+
+          // item is the individual number being iterated over
+          // from memo, so pushed each 'item' into orderTraversed
+          // and set memo to equal orderTraversed
+
+          orderTraversed.push(item);
+
           memo = orderTraversed;
-        
+
           return memo;
         }, 10);
 

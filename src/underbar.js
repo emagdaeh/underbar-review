@@ -103,7 +103,7 @@
       if (!test(val)) {
         results.push(val);
       }
-    })
+    });
     return results;
   };
 
@@ -135,7 +135,7 @@
     //collection[i], i, collection)
     _.each(collection, function(val, idx, collection) {
       results.push(iterator(val));
-    })
+    });
     return results;
   };
 
@@ -178,12 +178,16 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function (collection, iterator, accumulator) {
+    // Need edge cases for no accumulator being passed
+    if (accumulator === undefined) {
+      accumulator = collection[0];
+    }
 
     _.each(collection, function(val, idx, collection) {
       accumulator = iterator(accumulator, val);
-    })
-    return accumulator;
+    });
 
+    return accumulator;
   };
 
   // Determine if the array or object contains a given value (using `===`).
